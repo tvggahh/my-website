@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Tig | Professional Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links .active {
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url("/api/placeholder/1200/800") no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            margin-top: 65px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-container video,
+        .video-container img {
+            width: 100%;
+            display: block;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 0 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .why-here {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            flex: 0 0 calc(33.333% - 20px);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .card-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .card {
+                flex: 0 0 calc(50% - 15px);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .video-container {
+                max-width: 90%;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .card {
+                flex: 0 0 100%;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat-item {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ryan Tig</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#why-here">Why are you creeping?</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero">
+        <!-- Video Container - Add your video or GIF here -->
+        <div class="video-container">
+            <!-- Option 1: For video -->
+            <video autoplay loop muted playsinline>
+                <source src="logo.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                <img src="/api/placeholder/800/450" alt="Promotional video">
+            </video>
+            
+            <!-- Option 2: For GIF (uncomment to use) -->
+            <!-- <img src="your-animated-gif.gif" alt="Animated introduction"> -->
+        </div>
+        
+        <div class="hero-content">
+            <h1>Ryan Tig</h1>
+            <p>Fuck it we ball</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn">Learn About Me</a>
+                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="headshot.jpeg" alt="Professional headshot" width="100%">
+                </div>
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <p>My name is Tig and I enjoy making money.</p>
+                    <br>
+                    <br>
+                    <h3>My Expertise</h3>
+                    <p>Not much.</p>
+                    <br>
+                    <br>
+                    <h3>Professional Philosophy</h3>
+                    <p>To the people that say money doesn't buy you happiness, are wrong.</p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">0+</div>
+                    <div class="stat-text">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0+</div>
+                    <div class="stat-text">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">29+</div>
+                    <div class="stat-text">Dissatisfied Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why are you creeping? Section -->
+    <section id="why-here" class="why-here">
+        <div class="container">
+            <h2 class="section-title">Why are you creeping?</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="Tigger_is_scared.webp" alt="Consulting services" width="100%">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Why are you actually here?</h3>
+                        <p class="card-text">There is literally nothing useful on this website.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="what is this.png" alt="Collaboration" width="100%">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">What is this?</h3>
+                        <p class="card-text">I wanted to learn how to code a website and I just did this for fun.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="manipulate.jpeg" alt="Results" width="100%">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">I miss you, I miss us.</h3>
+                        <p class="card-text">Then hit me up my ekitten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Add me on Discord: tigx</p>
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <a href="https://x.com/messages/compose?recipient_id=2335612039" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://x.com/Tvggah">Twitter</a>
+            </div>
+            
+            <p class="copyright">© 2019 Ryan Tig. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
